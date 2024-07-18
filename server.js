@@ -9,8 +9,7 @@ const htmlRoutes = require('./routes/htmlRoutes');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
-app.use('/api', apiRoutes);
-app.use('/', htmlRoutes);
+app.use('/', api);
 
 app.listen(PORT, () => {
     console.log("server is running on port: ", PORT);

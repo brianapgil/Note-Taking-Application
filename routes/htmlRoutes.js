@@ -1,10 +1,14 @@
+const path = require('path');
 const router = require('express').Router();
 
-// Import our modular routers for /apiRoutes and /htmlroutes
-const apiRoutes = require('./apiRoutes');
-const htmlRoutes = require('./htmlRoutes');
+// "/notes" responds with the notes.html file
+router.get('/notes', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/notes.html'));
+});
 
-router.use('/api', apiRoutes);
-router.use('/', htmlRoutes);
+// All other routes respond with the index.html file
+router.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+});
 
 module.exports = router;
